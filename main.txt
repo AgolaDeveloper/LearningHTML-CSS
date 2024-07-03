@@ -1,0 +1,436 @@
+package main
+
+import "fmt"
+
+/*func add(c, d int) {
+	e := c + d
+	fmt.Printf("\n *******\nThe sum of %v and %v is %v \n", c, d, e)
+	//return e
+}*/
+
+/*func welcome(welCome string) {
+	fmt.Println(" ")
+	fmt.Printf("WElcome %v to our PLATFORM", welCome)
+	//fmt.Printf("Your name is stored at %v; memory address", pontr)
+
+}*/
+func welcome(welCome *string) {
+	fmt.Println(" ")
+	fmt.Printf("WElcome %v to our PLATFORM\n", *welCome)
+	fmt.Println("Memory address:", welCome)
+	*welCome = "wE CAN (as well) CALL YOU RAS OWINO AGOLA"
+	fmt.Printf(*welCome)
+}
+
+//CREATING FUNCTION THAT'LL CHANGE OUR MAIN FUNC'S ELEMENTS (we pass a string pointer as a parameter
+//...thus, expecting mem address as an arguement
+func changeSlice(ptrChangeSlice *[]string) {
+
+	var yourChoice string
+	//var yourInput string
+
+	for {
+
+		fmt.Printf("You wanna CHANGE/REPLACE Elements in Your original Slice?\nThis: %v\n(1. Yes\n2. No): ", yourChoice)
+		fmt.Scan(&yourChoice)
+
+		if yourChoice == "1" || yourChoice == "Yes" || yourChoice == "YES" || yourChoice == "yes" {
+			//newSlice = append(newSlice, yourInput)
+			/*x := *ptrChangeSlice
+			for i := 0; i < len(*ptrChangeSlice); i++ {
+				fmt.Println("Add an element...ENTER ANY VALUE: ")
+				fmt.Scan(&yourInput)
+				x[i] = yourInput
+			}*/
+
+			//var index int
+
+			for index := range *ptrChangeSlice { //looping thru' the slice; and accessing its indexes & values
+				//x := *ptrChangeSlice
+				var yourInput string
+
+				fmt.Println("Add an element...ENTER ANY VALUE: ")
+				fmt.Scan(&yourInput)
+				(*ptrChangeSlice)[index] = yourInput
+				//x[index] = yourInput
+
+				//*ptrChangeSlice = append(*ptrChangeSlice, yourInput) //for every index in the slice, we're adding 'yourInput', from index 0
+				//...replcaing everything initially contained/stored in the indexes
+
+			}
+
+			/*for _, yourInput := range *ptrChangeSlice { //looping thru' the slice; and accessing its indexes & values
+				//x := *ptrChangeSlice
+				//var yourInput string
+
+				fmt.Println("Add an element...ENTER ANY VALUE: ")
+				fmt.Scan(&yourInput)
+				//x[index] = yourInput
+
+			}*/
+		} else if yourChoice == "2" || yourChoice == "No" || yourChoice == "NO" || yourChoice == "no" {
+
+			fmt.Println("OKAY. BYE Dawg")
+			break
+		} else {
+			fmt.Println("INVALID CHOICE... Retry Dawg")
+
+		}
+	}
+
+	fmt.Println("New (CHANGED) Slice:", *ptrChangeSlice)
+}
+
+//CREATING FUNCTION THAT'LL access [memeory] location of our slice in main func, and add/append more elements to it (we pass a string pointer as a parameter
+//...thus, expecting mem address as an arguement
+
+func addSlice(ptrSlice *[]string) {
+	fmt.Printf("Here's our slice content before it's modified...\n through our pointer:\n %v", *ptrSlice)
+
+	//var ptrSlice string
+	var usersChoice string
+	var userInput string
+
+	for {
+		fmt.Printf("\n\nYou ready to change the slice's content?\n (Y/N):")
+		fmt.Scan(&usersChoice)
+		if usersChoice == "Y" || usersChoice == "y" {
+			fmt.Println("Then add an element to the new slice:")
+			fmt.Scan(&userInput)
+			*ptrSlice = append(*ptrSlice, userInput)
+
+			//fmt.Println(*ptrSlice)
+			//break
+		} else if usersChoice == "N" || usersChoice == "n" {
+			fmt.Println("No worries.BYE")
+
+			break
+		} else {
+			fmt.Printf("INVALID CHOICE...Kindly Try Again. \nBACK HERE AGAIN: ")
+
+			continue
+
+		}
+	}
+
+	fmt.Printf("%v is the Slice(Courtesy of Pointer Slice arguement\n", *ptrSlice)
+
+}
+
+func changeValue(ptr *int) {
+	x := 5
+	y := 4
+	fmt.Printf("\n\n*********************************************\n")
+
+	fmt.Println("original value of the Argument b4 it's manipulated/changed thru our pointer:", *ptr)
+	fmt.Println("And it's stored at (memory address):", ptr)
+
+	//fmt.Println("x times y gives:", x*y)
+	*ptr = (x * y)
+	fmt.Println("New value of pointedVal, after passing its memory location to our pointer function:", *ptr)
+
+	fmt.Printf("Checking (new) memory it's stored at; %v our pointer", ptr)
+
+}
+
+func main() {
+
+	/*name := "Ras"
+
+		fmt.Println("\n We come: \n I'm", name)
+
+		//Loop; the only loop in Golang is for
+
+		tota := 0
+		for j := 10; j <= 200; j += 10 {
+
+			fmt.Println(j)
+
+			if j < 100 {
+				fmt.Println(" This one is lesser than 100")
+
+			} else if j > 100 {
+				fmt.Println(" This one is greater than 100")
+
+			} else {
+				//fmt.Println(" This equals 100")
+				continue
+
+			}
+			tota += j
+		}
+		fmt.Println("the iterated values i the loop sum up to:", tota)
+
+		//arrays
+		var arr = [5]int{2, 3, 4, 5, 6} //Declaration and Initialization of the array
+		num := len(arr)
+		fmt.Println("Our array's length is:", num)
+
+		tot := 0 //Declaring and initializing our tot to 0
+		for i := 0; i < 5; i++ {
+			fmt.Println(" Value", i+1, " in the array is:", arr[i])
+
+			tot += arr[i] //with every iteration, this line sums every...
+			//... array value and stores it in the tot variable
+
+		}
+
+		fmt.Println("The sum of our values in the array is:", tot)
+
+		//plantHeight := 1
+		//for plantHeight < 5 {
+		 // fmt.Println("still growing! current height:", plantHeight)
+		 // plantHeight++
+	//}
+		//fmt.Println("plant has grown to ", plantHeight, "inches")
+
+		// var plantHeight int
+		plantH := 0
+
+		for plantHeight := 1; plantHeight <= 15; plantHeight++ {
+
+			if plantHeight < 7 {
+
+				fmt.Println("***\n this is under 7 inches still***")
+			} else if (plantHeight > 7) && (plantHeight < 11) {
+				fmt.Printf("%v falls between 7 and 11", plantHeight)
+			} else if (plantHeight > 11) && (plantHeight < 15) {
+				fmt.Printf("%v falls between 11 and 15", plantHeight)
+			} else if plantHeight == 15 {
+				fmt.Println("HAHAAAA... this is 15! We are not showing its inches LOL!")
+				break //BREAK terminates the iteration of a loopp
+				//thus, compilation moves forward to the immediate/next code block
+			} else {
+				fmt.Println("this is", plantHeight, "it falls no where")
+				continue //CONTINUE skips iteration of a loop
+				//we don't exit the loop but only sjipp current iteration..
+				//... and move son to the next iteration, on the same loop
+
+			}
+			fmt.Println("\n**still growing! current height:", plantHeight, "inches!")
+			plantH += plantHeight
+
+		}
+		fmt.Printf("\n***************\n")
+		fmt.Println("Plant has grown to", plantH, " inches")
+		fmt.Printf("\n")
+		//fmt.Println("plant has grown to ", plantH, "inches")
+
+		//NESTED if LOOP
+		for x := 0; x < 3; x++ {
+			for y := 0; y < 4; y++ {
+				fmt.Println(x + y)
+			}
+		}
+
+		//HERE'S OUR FUNCTION THAT HAS OUR MULTIPLICATION TABLE
+		//func mult()
+		// we trynna use nested loop to create a multiplication table
+
+		for m := 0; m <= 10; m++ {
+
+			fmt.Println("****\n", m)
+			for n := 1; n <= 10; n++ {
+				fmt.Printf(" \n")
+
+				/*fmt.Printf("\n ")
+				fmt.Printf("%v*%v= %v", m, n, m*n)
+				fmt.Printf("\n ")*/
+	//fmt.Println(m, "*", n, "=", m*n)
+	//fmt.Printf("\n")
+
+	/*}
+		fmt.Printf(" \n")
+
+	}
+	//next is practicing Switch statement
+	//the switch case values and switch expression should be of same type...
+	//coz, it's the case valeus and expression that we'll compare...
+	//...to find the best/right code block for execution
+	var arrr = [10]int{60, 10, 87, 2, 8}
+	//var k int
+	//var nam string
+	//fmt.Printf("Enter Your Name Dawg:")
+
+	//fmt.Scan(f&nam)
+
+	//var k int
+	//fmt.Printf("Ayoo", nam, "\n What's your Day number,Dawg?")
+
+	//fmt.Scan(&k)
+
+	k := len(arrr)
+
+	switch k {
+	case 1:
+		fmt.Println("Ayoo! \n It's Monday")
+	case 2:
+		fmt.Println("Ayoo! \n It's Tuesday")
+	case 3:
+		fmt.Println("Ayoo! \n It's Wednesday")
+	case 4:
+		fmt.Println("Ayoo! \n It's Thursday")
+	case 5:
+		fmt.Println("Ayoo! \n It's Friday Guys!")
+	case 6:
+		fmt.Println("Ayoo! \n It's Saturday")
+	case 7:
+		fmt.Println("Ayoo! \n It's Sunday")
+	default:
+		fmt.Println("YOUR INPUT(", k, ") IS INVALID, \n We're sorry \n Kindly countercheck your input dawg")
+
+	}
+
+	n1 := 10
+	n2 := 12
+	add(n1, n2)*/
+
+	//arrayz()
+	//arayz()
+	//mySlice()
+	//fmt.Println("Here we are, calling the function")
+	//loopSlice()
+
+	//fmt.Println("Struct Basics")
+
+	type Students struct {
+		studentName    string
+		studentAdmNo   string
+		officialParent string
+		class          string
+		classteacher   string
+	}
+
+	var stdntName string
+	var stdntAdm string
+	var parnt string
+	var clss string
+	var clssTchr string
+
+	fmt.Printf("Welcome to TKNP Student Portal, kindly Enter the following details (if you're a TKNP student)\n Your Name\n Your Admission Number\n Your Parent's Name\n Your Class\n Your Class Teacher\n")
+	fmt.Println("Name?:")
+	fmt.Scanln(&stdntName)
+
+	fmt.Println("Admission Number?:")
+	fmt.Scanln(&stdntAdm)
+
+	fmt.Println("Your Class?:")
+	fmt.Scanln(&clss)
+
+	fmt.Println("Class Teacher?:")
+	fmt.Scanln(&clssTchr)
+
+	fmt.Println("Parent's Name?:")
+	fmt.Scanln(&parnt)
+
+	var student1 = Students{
+		studentName:    stdntName,
+		studentAdmNo:   stdntAdm,
+		officialParent: parnt,
+		class:          clss,
+		classteacher:   clssTchr,
+	}
+
+	for {
+		var yourChoice string
+		fmt.Printf("%v would you like to go ahead and see your Details? Enter: \n 1. No \n 2. Yes\n\n ", student1.studentName)
+		fmt.Scan(&yourChoice)
+		if yourChoice == "2" || yourChoice == "Yes" || yourChoice == "yes" || yourChoice == "YES" {
+			fmt.Printf("Name: %v\n ", student1.studentName)
+			fmt.Printf("Admission No.: %v\n ", student1.studentAdmNo)
+			fmt.Printf("Parent/Guardian: %v\n ", student1.officialParent)
+			fmt.Printf("Your Class: %v\n ", student1.class)
+			fmt.Printf("Your ClassTr: %v\n ", student1.classteacher)
+
+			break
+
+		} else if yourChoice == "1" || yourChoice == "No" || yourChoice == "no" || yourChoice == "NO" {
+			fmt.Printf("You just Exited %v: BYE...", student1.studentName)
+
+			break
+		} else {
+			fmt.Printf("Acha Upuuzi %v: YOU ENTERED INVALID CHOICE\n Retry", student1.studentName)
+
+			continue
+		}
+
+	}
+
+	/*fmt.Println("Let's now play around with Pointers")
+	fmt.Println("There are two signs used when dealing with Pointers in Golang: \n1. * and \n2. &")
+
+	fmt.Println("We use & sign to get memeory address of ourVar variable")
+	fmt.Println("Then, we store it (the memory address) to another variable")
+	fmt.Println("....that should be special variable declared, to strictly store memory address of other variables")
+	fmt.Println("...that's what we call a POINTER: Variable that points/references to another variable by...")
+	fmt.Println("...storing its memory address; where it's stored in the memory")
+	fmt.Println("(Pointers declared using * sign to preceed the 'type' it's referencing: var ptr *typeOfpointedVariable)")
+	fmt.Println("***************************************")
+	fmt.Printf("Plus we can Derefernce a ponter \n...meaning we instruct it/him to 'give us value stored at the memory it's holding'")
+	fmt.Printf("So deferencing a pointer enables us to access the value of a variable it's storing its memory\n deferencing is acchievable by using * \n  but not 'type's prefix' (*int)")
+	fmt.Println("....as ou pointer's names prefix (*ptr)")
+
+	var ourVar int = 15 //declaring our variable
+	// var p *int     //declaring a variable p
+	//...and using * to preeced its type( to show it's a pointer)
+	//...pointing at a certain variable
+
+	//p = &ourVar //using & to get ourVar memory address
+	//...then assignes (stores) it to our already-declared pointer variable, p
+
+	var p *int = &ourVar
+	fmt.Println("But this is the value it's refernecing to (b4 dereferencing):", *p)
+
+	//we can also use pointer dereferencing to manipulate/change value(s) at a variable it's pointing
+	*p = 2 //this dereferencing changes value of variable our pointer is holding its memory to 2; assigning 2 to variable it's storing its address
+	//thus, now ourVariable has a 2 as its value
+
+	fmt.Println("Here's what our pointer holds", p) //gives us memory that it stores currently
+	fmt.Println("Yea it is", &ourVar)               //same as getting p (p and &ourVar are same)
+
+	fmt.Println("But this is the new value of ourVar upon manipulating it (through dereferencing):", *p)
+
+	pointedVal := 10
+	changeValue(&pointedVal)
+
+	//myNam := "Owino"
+	//welcome(&myNam)
+	fmt.Println("")
+
+	var originalSlice []string
+	var sliceInput string
+	var usersChoice2 string
+
+	fmt.Println("")
+	fmt.Println(originalSlice, "Our Slice is currently empty as you can see")
+
+	for {
+
+		fmt.Printf("You Need to add Elements to our Slice?\n(C for continue or E for Exit):")
+		fmt.Scan(&usersChoice2)
+
+		if usersChoice2 == "C" || usersChoice2 == "c" {
+			fmt.Println("Kindly add some values to the Slice: ")
+			fmt.Scan(&sliceInput)
+			originalSlice = append(originalSlice, sliceInput)
+
+			fmt.Println("ELEMENTS IN SLICE SO FAR:", originalSlice)
+			continue
+		} else if usersChoice2 == "E" || usersChoice2 == "e" {
+			fmt.Println("You Just Exited")
+			fmt.Println("ELEMENTS IN SLICE SO FAR:", originalSlice)
+
+			break
+		} else {
+			fmt.Println("ELEMENTS IN SLICE SO FAR:", originalSlice)
+			fmt.Println("RETRY; Just entered Invalid Choice\nAGAIN, ")
+			continue
+
+		}
+	}
+
+	addSlice(&originalSlice)
+	changeSlice(&originalSlice)
+	fmt.Println("You see what YOU Called OriginalSlice: ", originalSlice)*/
+
+}

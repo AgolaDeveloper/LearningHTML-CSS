@@ -1,0 +1,35 @@
+1. SLICES and ARRAYS
+#############################################1
+arrays as backing array of a slices
+//SLICES OPERATIONS AND THE SIGNIFICANCE
+EMPTY AND NIL ARRAYS OF SLIDES 
+Their cons and pros in development
+
+capacity and length operations; and their significance...everything a coder should know about them
+....thier relationship
+//how to make changes on a parent slice/array without changing the backing/underlying array
+
+//making anoriginalbacking array then using makemethod to create another slice(childofbacking slice)...
+...then slice elements form the backing slice b4 using copy() method to copy the slice elements into our already-initialized, but empty child slice
+//
+
+2. GO-ROUTINES & CONCURRENCY 
+############################################22
+Definition 
+it's significance 
+how it works 
+how to create the goroutine
+what are the componenets of goroutines and different operations under it hood?
+
+3. EXIT STATUS CODES 
+################################################333
+Definition
+their significance and applications
+example and use cases
+
+        N/B:... SUCCESS and ERROR CODES
+
+4. CONTROL FLOW (Decision-making)
+##############################################4444
+visualization of the concept 
+

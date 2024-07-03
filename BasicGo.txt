@@ -1,0 +1,82 @@
+                            Learning Golang (Self-taught) 
+Go proves to be one of the most promising languages with successful future prospects despite being the youngest in 'developer community'
+
+Learning a new programming language as aint a run in the park, especially if you're an aspiring (self-taught) developer
+
+It's my second week of learning this new language, and I can attest that I'm intrigued and impressed so far. It has intruiging capabilities and features compared to other languages that I have encountered in the past.
+
+Getting started with Golang, as a self-taught wasn't easy at the start untill I resorted to the right resources; that eventually enabled dme to comprehend the new language
+Besides, the fact that I had a knowledge of programming (before I deffered my Computer Science degree course) worked to my advantage since I could easily wrap my head around its concepts; 
+
+Fast forward, my 2-week in Golang has proved worthwhile since I have become so confident in my grasp of coding (at a basic level though) using the simplest and fastest language in 21st Century...lol
+...and here is everything I've covered so far:
+1. Background history of Golang development
+    a. when it was developed
+    b. why it was developed
+    c. Its features
+2. Syntactic Structure 
+3. Variables
+4. Constants
+5. Operators
+6. Arrays
+7. Slices
+8. Maps
+9. Structs
+10. Functions
+11. Pointers
+12. Loops
+    a. for
+        i. range
+13. Conditional statements
+    a. if
+    b. if else
+    c. else if
+        i. break
+        ii. continue
+
+I've decided to document everything I have covered, at basic level, before I continue getting deeper and further. I believe this documentation gotta play 2 vital roles:
+1. Help me develop better grasp of everything I have learned/covered so far
+2. Help in giving another aspiring (or beginner) Golang Dev insights into basics of the language 
+
+Part II of this documentation shall be a continuation from "Background History of Golang Development"
+ 
+
+
+
+            Background History of Golang development
+Go, initially and commonly reffered to as Golang, is a brainchild of three Google dveelopers who brainstormed the possibility of a language that would make it easier fro Google to develop its systems, resources and applications.
+Golang was developed around 2007 but officialy became open-source in 2009.
+The question that peopel would often ask, I included, is why the 3 developers would want another new language in a world that was alredy having enough of programming language in the 2000s
+The main reason, according to my reserach, was to bridge a gap that many high-level languages couldn't help with in developer community.
+First, there were a group of languages; 
+    a. Simple and Slow languages (like Python)
+    b. Fast ad Complex languages (like C++)
+Evidently, there was something missing; lack of Simplicity and speed in one language
+Thus, the 3 devs wanted to come up with a language that would guarantee both the Simplicity and fast speed; that's when the idea of Golang came in
+Consequently, reason why it got developed translates to its features (features that make it new favourite in the Developer commuity.)
+    Features
+    1. Go is Simple (has simple syntax like Python)
+    2. Go is fast (like C++) and easy to run and compile
+    3. Go supports concurency
+
+B. Syntatic Structure
+After covering the background story of the language, I resorted to cover its sytactic structure.
+every Go program is stored under a package
+Its structure has about 4 section
+    i. The package declaration section
+    ii. The package importation section
+    iii. The main function section 
+    iv. The statements section 
+
+    package main
+    import (
+        "fmt"
+    )
+
+    func main(){
+
+    }
+
+
+
+
