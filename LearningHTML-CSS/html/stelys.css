@@ -4,12 +4,13 @@
 body{
     display: flex;
     padding: 10px;
+    background-color: black;
 
 }
 
-div{
+.item{
     background-color: gainsboro;
     border-color: black;
-    border-width: 1px;
+    border-width: 3px;
     padding: 15px;
 }
